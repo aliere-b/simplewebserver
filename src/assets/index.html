@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsau webserver</title>
+    <style src="bootstrap.min.css" type="css"></style>
+</head>
+<body>
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">jsau webserver page</h1>
+    </div>
+  </section>
+
+  <div class="container">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Ajouter une nouvelle</h3>
+    <form>
+      <div class="form-group">
+        <label>Titre:</label>
+        <input type="text" name="name" class="form-control" value="Titre " required="">
+      </div>
+      <div class="form-group">
+        <label>Auteur:</label>
+        <input type="text" name="email" class="form-control" value="auteur" required="">
+      </div>
+      <div class="form-group">
+        <label>Contenu:</label>
+        <input type="text" name="content" class="form-control" value="contenu" required="">
+      </div>
+      <button type="submit" class="btn btn-success save-btn">Ajouter la nouvelle</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <!-- Editable table -->
+      <div class="card">
+          <h3 class="card-header text-center font-weight-bold text-uppercase py-4">liste des nouvelles</h3>
+          <div class="card-body">
+            <div id="table" class="table-editable">
+              <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+                    class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                  <tr>
+                    <th class="text-center">Titre</th>
+                    <th class="text-center">Auteur</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in nouvelledatas %}
+                    <tr>
+                      <td class="pt-3-half" contenteditable="true">{{ item.title }}</td>
+                      <td class="pt-3-half" contenteditable="true">{{ item.author }}</td>
+                      <td class="pt-3-half" contenteditable="true">{{ item.content }}</td>
+                
+                          <td style="text-align:center;">
+                            <button 
+                              class="btn btn-success btn-edit" 
+                              data-toggle="modal" 
+                              data-target="#myModal" 
+                              contenteditable="false">Edit</button>
+                          </td>
+                          <td style="text-align:center;">
+                            <button 
+                              class="btn btn-danger btn-delete" 
+                              data-toggle="modal" 
+                              data-target="#myModal" 
+                              contenteditable="false">Delete</button>
+                          </td>
+
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+            
+                            </button>
+                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      </div>
+    <!-- Editable table -->
+  </div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "jsau-webserver-app",
+  "version": "1.0.0",
+  "description": "TP1 de JSAU; application node  webserver du projet 1",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:watch": "nodemon src",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "mkdir src/resource/css && lessc src/resource/less/main.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > src/resource/css/bundle.min.css",
+    "build:js": "browserify src/resource/js/bundle.js | uglifyjs --compress > resource/js/bundle.min.js",
+    "clean": "echo 'TODO: Implement this script'"
+  },
+  "author": "DLW",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nunjucks": "3.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.7.1",
+    "browserify": "^16.5.0",
+    "clean-css": "4.2.1",
+    "clean-css-cli": "4.3.0",
+    "eslint": "^6.5.1",
+    "eslint-config-usecases": "^1.3.0",
+    "less": "3.10.3",
+    "nodemon": "^1.19.4",
+    "pixrem": "5.0.0",
+    "postcss-cli": "6.1.3",
+    "uglify-js": "3.6.7"
+  }
+}
