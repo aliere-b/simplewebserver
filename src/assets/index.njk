@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsau webserver</title>
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      /* Style the body */
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      .col-35 {
+        float: left;
+        width: 30%;
+        margin-top: 6px;
+        padding: 5px;
+      }
+      .col-65 {
+        float: left;
+        width: 70%;
+        margin-top: 6px;
+        padding: 5px;
+      }
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #ededed;
+      }
+
+      /* Responsive layout - when the screen is less than 600px wide, 
+      make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+      .btn {
+  
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+
+        /* create a small space when buttons wrap on 2 lines */
+        margin: 2px 0;
+
+        /* invisible border (will be colored on hover/focus) */
+        border: solid 1px transparent;
+        border-radius: 4px;
+
+        /* size comes from text & padding (no width/height) */
+        padding: 0.5em 1em;
+      }
+      .btn-success {
+        color: #ffffff;
+        background-color: green;
+      }
+      .btn-edit {
+        color: #fff;
+        background-color: #9555af;
+      }
+      .btn-delete {
+        color: #fff;
+        background-color: red;
+      }
+    </style>
+
+</head>
+<body>
+
+
+  <div>
+    <h1 class="jumbotron-heading">jsau webserver page</h1>
+  </div>
+
+  <div class="container">
+    <h3>Ajouter une nouvelle</h3>
+    <div>
+      <form action="/" method="POST" id="addnews">
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Titre</label>
+          </div>
+          <div class="col-75">
+            <input type="text" name="title" placeholder="Titre" required="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Auteur</label>
+          </div>
+          <div class="col-75">
+            <input type="text" name="author" placeholder="auteur" required="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Contenu</label>
+          </div>
+          <div class="col-75">
+            <textarea 
+              class="form-control rounded-0" 
+              rows="10" 
+              name="content" 
+              placeholder="contenu" required=""></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+    
+    <div>
+      <!-- Editable table -->
+        <div class="card">
+            <h3 >liste des nouvelles</h3>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Titre</th>
+                    <th >Auteur</th>
+                    <th >Description</th>
+                    <th colspan="2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in nouvelledatas %}
+                    <tr>
+                      <td>{{ item.title }}</td>
+                      <td>{{ item.author }}</td>
+                      <td>{{ item.content }}</td>
+                      <td style="text-align:center;">
+                        <button 
+                          onclick="editNouvelles({{item.id}})"
+                          class="btn btn-edit">Edit</button>
+                      </td>
+                      <td style="text-align:center;">
+                        <button
+                          onclick="deleteNouvelles({{item.id}})"
+                          class="btn btn-delete">Delete</button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        </div>
+      <!-- Editable table -->
+    </div>
+  </div>
+
+
+  <script>
+    function editNouvelles(id) {
+      location.replace("http://localhost:8081/edit/"+id)
+    }
+  </script>
+  <script>
+    function deleteNouvelles(id) {
+      location.replace("http://localhost:8081/delete/"+id)
+    }
+  </script>
+
+</body>
+</html>

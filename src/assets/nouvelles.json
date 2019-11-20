@@ -1,28 +1,20 @@
-{
-  "nouvelles": [
-    {
-      "id": 3,
-      "title": "lorem test",
-      "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
-      "author": "Marlane Blabber"
-    },
-    {
-      "id": 5,
-      "title": "Toto Tata",
-      "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
-      "author": "Marlane Blabber"
-    },
-    {
-      "id": 15,
-      "title": "titre test 2",
-      "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-      "author": "Marlane Blabber"
-    },
-    {
-      "id": 2,
-      "title": "titre test 2",
-      "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-      "author": "Marlane Blabber"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "lorem test",
+    "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
+    "author": "Marlane Blabber"
+  },
+  {
+    "id": 2,
+    "title": "Toto Tata",
+    "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
+    "author": "Marlane Blabber"
+  },
+  {
+    "id": "3",
+    "title": "ajout 1",
+    "content": "\r\n\r\ncontenu ajout modifié encore \r\n",
+    "author": "toto"
+  }
+]

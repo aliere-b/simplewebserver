@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsau webserver</title>
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <style>
+      * {
+        box-sizing: border-box;
+      }
+      /* Style the body */
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+       .btn {
+  
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+
+        /* create a small space when buttons wrap on 2 lines */
+        margin: 2px 0;
+
+        /* invisible border (will be colored on hover/focus) */
+        border: solid 1px transparent;
+        border-radius: 4px;
+
+        /* size comes from text & padding (no width/height) */
+        padding: 0.5em 1em;
+      }
+      .btn-success {
+        color: #ffffff;
+        background-color: green;
+      }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+      <h1>jsau webserver page</h1>
+      <h4>{{message}}</h4>
+      <button onclick="returnHome()" class="btn btn-success">retour</button>
+    </div>
+ 
+
+  <script>
+    function returnHome() {
+      location.replace("http://localhost:8081/")
+    }
+  </script>
+</body>
+</html>

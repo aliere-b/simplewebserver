@@ -9,8 +9,8 @@ let app = express()
 app.use(morgan('dev'))
 
 nunjucks.configure('./src/assets', {
-    autoescape: true,
-    express: app
+    express: app,
+    autoescape: true
 })
 
 // parse requests of content-type - application/json
@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.use(express.static('./src/assets/css'))
 
 let nouvellesroute = require('./routes/nouvelles')
 let webserverroute = require('./routes/webserver')

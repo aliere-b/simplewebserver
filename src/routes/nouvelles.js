@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
             try {
                 let rawdata = JSON.parse(data)
                 let idnouvelle = req.params.id
-                let nouvelle = rawdata.nouvelles.find((item) => {
+                let nouvelle = rawdata.find((item) => {
                     return item.id == idnouvelle
                 })
                 if (nouvelle) {
@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
         } else {
             try {
                 let rawdata = JSON.parse(data)
-                rawdata.nouvelles.push(postdata) // insert post data
+                rawdata.push(postdata) // insert post data
                 let formatdata = JSON.stringify(rawdata, null, 2) // convert back to json
                 fs.writeFile('./src/assets/nouvelles.json', formatdata, (err) => {
                     if (err) {
@@ -95,12 +95,12 @@ router.put('/:id', (req, res) => {
             try {
                 let rawdata = JSON.parse(data)
                 const idnouvelle = req.params.id
-                const nouvelleindex = rawdata.nouvelles.findIndex((item) => {
+                const nouvelleindex = rawdata.findIndex((item) => {
                     return item.id == idnouvelle
                 })
                 if (nouvelleindex > -1) {
-                    rawdata.nouvelles.splice(nouvelleindex, 1)
-                    rawdata.nouvelles.push(updatedata)
+                    rawdata.splice(nouvelleindex, 1)
+                    rawdata.push(updatedata)
                     let formatdata = JSON.stringify(rawdata, null, 2) // convert back to json
                     fs.writeFile('./src/assets/nouvelles.json', formatdata, (err) => {
                         if (err) {
@@ -134,11 +134,11 @@ router.delete('/:id', (req, res) => {
             try {
                 let rawdata = JSON.parse(data)
                 const idnouvelle = req.params.id
-                const nouvelleindex = rawdata.nouvelles.findIndex((item) => {
+                const nouvelleindex = rawdata.findIndex((item) => {
                     return item.id == idnouvelle
                 })
                 if (nouvelleindex > -1) {
-                    rawdata.nouvelles.splice(nouvelleindex, 1)
+                    rawdata.splice(nouvelleindex, 1)
                     let formatdata = JSON.stringify(rawdata, null, 2) // convert back to json
                     fs.writeFile('./src/assets/nouvelles.json', formatdata, (err) => {
                         if (err) {

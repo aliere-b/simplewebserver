@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsau webserver</title>
+    <!-- Latest compiled and minified CSS -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+      .btn {
+  
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+
+        /* create a small space when buttons wrap on 2 lines */
+        margin: 2px 0;
+
+        /* invisible border (will be colored on hover/focus) */
+        border: solid 1px transparent;
+        border-radius: 4px;
+
+        /* size comes from text & padding (no width/height) */
+        padding: 0.5em 1em;
+      }
+      .btn-edit {
+        color: #fff;
+        background-color: #9555af;
+      }
+      .btn-delete {
+        color: #fff;
+        background-color: red;
+      }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    <h3>Modifier la nouvelle</h3>
+    
+    <form action="/updatenew" method="POST">
+      <div class="row">
+        <div class="col-25">
+          <label for="identifiant">Identifiant</label>
+        </div>
+        <div class="col-75">
+          <input type="text" name="id" value="{{ nouvelledatas.id }}" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="title">Titre</label>
+        </div>
+        <div class="col-75">
+          <input type="text" name="title" class="form-control" value="{{ nouvelledatas.title }}" required="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="author">Auteur</label>
+        </div>
+        <div class="col-75">
+          <input type="text" name="author" class="form-control" value="{{ nouvelledatas.author }}" required="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="content"> Ancien Contenu</label>
+        </div>
+        <div class="col-75">
+          <p>{{ nouvelledatas.content }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="content">Contenu</label>
+        </div>
+        <div class="col-75">
+          <textarea 
+            rows="10" 
+            name="content" 
+            placeholder="{{ nouvelledatas.content }}" required=""></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-edit">Enregister</button>
+      </div>
+    </form>
+    <div class="row">
+      <button onclick="returnHome()" class="btn btn-delete">Annuler</button>
+    </div>
+  </div>
+
+  <script>
+    function returnHome() {
+      location.replace("http://localhost:8081/")
+    }
+  </script>
+</body>
+</html>
