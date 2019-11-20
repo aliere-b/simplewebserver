@@ -6,6 +6,9 @@ let express = require('express')
 // eslint-disable-next-line new-cap
 let router = express.Router()
 
+// Index, page d'accueil, on propose
+// le formulaire de création de nouvelle
+// et la liste des nouvelles dans un tableau
 router.get('/', (req, res) => {
     fs.readFile('./src/assets/nouvelles.json', {encoding: 'utf8'}, (err, data) => {
         if (err) {
@@ -22,11 +25,11 @@ router.get('/', (req, res) => {
         }
     })
 })
-
+// Info
 router.get('/info', (req, res) => {
     res.send('jsau-webserver-1.0.0')
 })
-
+// insertion d'une nouvelle dans le fichier JSON
 router.post('/', (req, res) => {
     let postdata = req.body
     console.log(postdata)
@@ -61,17 +64,22 @@ router.post('/', (req, res) => {
     })
 
 })
-
+// On gère ici les trois type de succès
+// 1 pour l'ajout d'une nouvelle
+// 2 pour la modification d'une nouvelle
+// 3 pour le succès qui correspond à else
 router.get('/success/:nb', (req, res) => {
     if (req.params.nb == 1) {
         res.status(200).render('success.njk', {message: 'Nouvelle ajoutée avec succès'})
     } else if (req.params.nb == 2) {
-        res.status(200).render('success.njk', {message: 'Nouvelle enregistrée avec succès'})
+        res.status(200).render('success.njk', {message: 'Modifiations enregistrées avec succès'})
     } else {
         res.status(200).render('success.njk', {message: 'Nouvelle supprimée avec succès'})
     }
 })
-
+// Rendu pré-mise à jour d'une ressource
+// on renvoi la ressource dans une form
+// avec la possibilité de modification des champs
 router.get('/edit/:id', (req, res) => {
 
     fs.readFile('./src/assets/nouvelles.json', {encoding: 'utf8'}, (err, data) => {
@@ -95,7 +103,7 @@ router.get('/edit/:id', (req, res) => {
         }
     })
 })
-
+// Suppression d'une ressource
 router.get('/delete/:id', (req, res) => {
 
     fs.readFile('./src/assets/nouvelles.json', {encoding: 'utf8'}, (err, data) => {
@@ -128,8 +136,7 @@ router.get('/delete/:id', (req, res) => {
         }
     })
 })
-
-
+// Mise à jour proprement dit  d'une ressource
 router.post('/updatenew', (req, res) => {
     let updatedata = req.body
     console.log(updatedata)
@@ -171,4 +178,5 @@ router.post('/updatenew', (req, res) => {
         }
     })
 })
+
 module.exports = router

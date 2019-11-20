@@ -18,8 +18,6 @@ app.use(bodyParser.json())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use(express.static('./src/assets/css'))
-
 let nouvellesroute = require('./routes/nouvelles')
 let webserverroute = require('./routes/webserver')
 
