@@ -21,6 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 let nouvellesroute = require('./routes/nouvelles')
 let webserverroute = require('./routes/webserver')
 
+app.use(express.static('src/assets/img'))
+
 app.use('/', webserverroute)
 app.use('/nouvelles', nouvellesroute)
 

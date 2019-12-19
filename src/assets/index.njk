@@ -14,6 +14,9 @@
         color: #fff;
         padding: 1em;
       }
+      .logo {
+        height: 50px;
+      }
       .container {
         border-radius: 5px;
         background-color: #f2f2f2;
@@ -136,6 +139,7 @@
 
 
   <div class="navigation">
+    <img src="/up13.png" class="logo"> 
     <h3>NOUVELLES WEBSERVER</h3>
   </div>
 
@@ -161,6 +165,19 @@
         </div>
         <div class="row">
           <div class="col-25">
+            <label for="fname">Catégorie</label>
+          </div>
+          <div class="col-75">
+            <select name="category" id="pet-select">
+              <option value="">--Veuillez sélectionner une catégorie--</option>
+              {% for item in categories %}
+                <option value="{{ item.title }}">{{ item.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
             <label for="fname">Contenu</label>
           </div>
           <div class="col-75">
@@ -174,7 +191,7 @@
         <button type="submit" class="btn btn-success">Ajouter</button>
       </form>
     </div>
-    
+   
     <div>
       <!-- Editable table -->
         <div class="card">
@@ -185,6 +202,7 @@
                   <tr>
                     <th>Titre</th>
                     <th >Auteur</th>
+                    <th >Catégorie</th>
                     <th >Description</th>
                     <th colspan="2">Actions</th>
                   </tr>
@@ -194,6 +212,7 @@
                     <tr>
                       <td>{{ item.title }}</td>
                       <td>{{ item.author }}</td>
+                      <td>{{ item.category }}</td>
                       <td>{{ item.content }}</td>
                       <td style="text-align:center;">
                         <button 

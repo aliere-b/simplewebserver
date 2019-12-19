@@ -2,19 +2,22 @@
   {
     "id": 1,
     "title": "lorem test",
+    "category": "Drama",
     "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
     "author": "Marlane Blabber"
   },
   {
     "id": 2,
     "title": "Toto Tata",
+    "category": "Sci-Fi",
     "content": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula",
     "author": "Marlane Blabber"
   },
   {
-    "id": "4",
-    "title": "m2 pls",
-    "content": "Université paris 13",
-    "author": "univp13 "
+    "id": 3,
+    "title": "article",
+    "category": "Comedy",
+    "content": "Content",
+    "author": "toto"
   }
 ]

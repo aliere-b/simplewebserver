@@ -26,6 +26,7 @@
     "clean-css-cli": "4.3.0",
     "eslint": "^6.5.1",
     "eslint-config-usecases": "^1.3.0",
+    "jsau-news-util": "git+ssh://git@gitlab.com/aliere/jsau-news-util.git",
     "less": "3.10.3",
     "nodemon": "^1.19.4",
     "pixrem": "5.0.0",
