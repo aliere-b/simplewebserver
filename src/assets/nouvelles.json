@@ -14,10 +14,15 @@
     "author": "Marlane Blabber"
   },
   {
-    "id": 3,
-    "title": "article",
-    "category": "Comedy",
-    "content": "Content",
-    "author": "toto"
+    "id": "3",
+    "title": "article 1",
+    "content": "contenr update ",
+    "author": "toto titi"
+  },
+  {
+    "id": "4",
+    "title": "TEST",
+    "content": "des",
+    "author": "TOTO"
   }
 ]

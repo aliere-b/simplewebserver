@@ -2,7 +2,7 @@
 'use strict'
 
 const fs = require('fs')
-const jsaunewsutils = require('jsau-news-util')
+const monmodule = require('jsau-news-util')
 
 let express = require('express')
 // eslint-disable-next-line new-cap
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
         } else {
             try {
                 let rawdata = JSON.parse(data)
-                res.status(200).render('index.njk', {nouvelledatas: rawdata, categories: jsaunewsutils.newsCategories})
+                res.status(200).render('index.njk', {nouvelledatas: rawdata, categories: monmodule.newsCategories})
             } catch (err) {
                 console.error('Invalid JSON in file:', err)
                 res.sendStatus(500)
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
                     author: postdata.author
                 }
                 try {
-                    let test = jsaunewsutils.validateData(postdata.category)
+                    let test = monmodule.validateData(postdata.category)
                     if (test) {
                         rawdata.push(newobject) // insert post data
                         let formatdata = JSON.stringify(rawdata, null, 2) // convert back to json

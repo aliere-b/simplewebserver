@@ -6,6 +6,7 @@ let express = require('express')
 // eslint-disable-next-line new-cap
 let router = express.Router()
 
+
 router.get('/', (req, res) => {
 
     fs.readFile('./src/assets/nouvelles.json', {encoding: 'utf8'}, (err, data) => {
